@@ -1,0 +1,32 @@
+version: "3.7"
+services:
+
+  auth-service:
+    ports:
+        - 5000:5000
+    build:
+      context: ./auth-service
+  
+  club-service:
+    ports:
+        - 5001:5001
+    build:
+      context: ./club-service
+  
+  event-service:
+    ports:
+        - 5002:5002
+    build:
+      context: ./event-service
+
+  meeting-service:
+    ports:
+        - 5003:5003
+    build:
+      context: ./meeting-service
+  
+  member-service:
+    ports:
+        - 5004:5004
+    build:
+      context: ./member-service
