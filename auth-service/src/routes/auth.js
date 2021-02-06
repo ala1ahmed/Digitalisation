@@ -90,4 +90,74 @@ router.post(
     }
   }
 );
+
+/**
+ * @swagger
+ * /api/auth/resetRequest:
+ *  post:
+ *    tags:
+ *    - Login (Public)
+ *    description: reset password request
+ *    responses:
+ *      '200':
+ *        description: A successful response
+ */
+
+router.post(
+  "/resetRequest",
+  [
+    check("email", "Missing email").isEmail(),
+  ],
+  async (req, res) => {
+    try {
+      const errors = validationResult(req);
+
+      if (!errors.isEmpty())
+        return res.status(400).json({ errors: errors.array() });
+
+      const { email, password } = req.body;
+
+      const token = await login(email, password);
+
+      return res.status(200).json({ token });
+    } catch (error) {
+      console.log(error);
+      return res.status(400).send(error.message);
+    }
+  }
+);
+
+/**
+ * @swagger
+ * /api/auth/resetRequest:
+ *  post:
+ *    tags:
+ *    - Login (Public)
+ *    description: reset password request
+ *    responses:
+ *      '200':
+ *        description: A successful response
+ */
+
+router.post(
+  "/resetRequest",
+  [
+    check("email", "Missing email").isEmail(),
+  ],
+  async (req, res) => {
+    try {
+      const errors = validationResult(req);
+
+      if (!errors.isEmpty())
+        return res.status(400).json({ errors: errors.array() });
+
+      const { email } = req.body;
+
+    } catch (error) {
+      console.log(error);
+      return res.status(400).send(error.message);
+    }
+  }
+);
+
 module.exports = router;
