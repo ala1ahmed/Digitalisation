@@ -8,8 +8,9 @@ const swaggerJsDoc = require("swagger-jsdoc");
 const {
     swaggerOptions
 } = require("./swagger/options");
-
-
+const {
+    errorHandlerMiddleware,
+  } = require("./middlewares/errors/error-handler.middleware");
 
 
 
@@ -40,6 +41,8 @@ app.use("/api/club", clubRouter);
 
 const swaggerDocs = swaggerJsDoc(swaggerOptions);
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+
+app.use(errorHandlerMiddleware());
 
 
 app.listen(5001, () => {

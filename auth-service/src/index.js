@@ -47,7 +47,7 @@ app.use("/api/auth", authRouter);
 const swaggerDocs = swaggerJsDoc(swaggerOptions);
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
-app.use(errorHandlerMiddleware);
+app.use(errorHandlerMiddleware());
 
 app.listen(5000, () => {
   console.log("Server running on port 5000");
