@@ -31,11 +31,11 @@ const MESSAGES = {
     message: "MISSING_TOKEN",
     code: 8,
   },
-  PERMISSION_REQUIRED:{
+  PERMISSION_REQUIRED: {
     message: "PERMISSION_REQUIRED",
     code: 21,
   },
-  INVALID_CREDENTIALS:{
+  INVALID_CREDENTIALS: {
     message: "INVALID_CREDENTIALS",
     code: 22,
   },
@@ -46,6 +46,10 @@ const MESSAGES = {
   USER_NOT_FOUND: {
     message: "USER_NOT_FOUND",
     code: 24,
+  },
+  EVENT_NOT_FOUND: {
+    message: "EVENT_NOT_FOUND",
+    code: 25,
   },
 };
 
