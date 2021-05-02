@@ -62,7 +62,62 @@ const getMeetings = async() => {
     return meetings;
 };
 
+const getMeetingById = async(meetingId) => {
+    let meeting;
+    try {
+        meeting = Meeting.findByPk(meetingId);
+    } catch (error) {
+        console.log(error);
+        throw new InternalServerError();
+    }
+    if (!meeting) throw new NotFoundError(MESSAGES.MEETING_NOT_FOUND);
+    return meeting;
+};
+
+const deleteMeeting = async(meetingId) => {
+    let meeting;
+    try {
+        meeting = Meeting.findByPk(meetingId);
+    } catch (error) {
+        throw new InternalServerError();
+    }
+    if (!meeting) throw new NotFoundError(MESSAGES.MEETING_NOT_FOUND);
+    await meeting.destroy();
+    return true;
+};
+
+const updateMeeting = async({
+    startDate,
+    endDate,
+    meetingId,
+    agenda,
+    address,
+    report,
+    joiningCode,
+}) => {
+    let meeting;
+    try {
+        meeting = Meeting.findByPk(meetingId);
+    } catch (error) {
+        throw new InternalServerError();
+    }
+    if (!meeting) throw new NotFoundError(MESSAGES.MEETING_NOT_FOUND);
+
+    meeting.startDate = startDate;
+    meeting.endDate = endDate;
+    meeting.agenda = agenda;
+    meeting.address = address;
+    meeting.report = report;
+    meeting.joiningCode = joiningCode;
+
+    await meeting.save();
+    return meeting;
+};
+
 module.exports = {
     addMeeting,
-    getMeetings
+    getMeetings,
+    getMeetingById,
+    deleteMeeting,
+    updateMeeting,
 };
