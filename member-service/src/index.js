@@ -32,7 +32,7 @@ app.use(compression());
 app.use(cors());
 
 const memberRouter = require("./routes/member");
-app.use("/api/member", memberRouter);
+app.use("/", memberRouter);
 
 const swaggerDocs = swaggerJsDoc(swaggerOptions);
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));

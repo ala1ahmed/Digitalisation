@@ -37,7 +37,7 @@ app.use(cors());
 
 
 const meetingRouter = require("./routes/meeting");
-app.use("/api/meeting", meetingRouter)
+app.use("/", meetingRouter)
 
 
 

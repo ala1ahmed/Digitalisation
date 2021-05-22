@@ -35,7 +35,7 @@ app.use(cors());
 
 
 const clubRouter = require("./routes/club");
-app.use("/api/club", clubRouter);
+app.use("/", clubRouter);
 
 
 

@@ -42,7 +42,7 @@ app.use(compression());
 app.use(cors());
 
 const authRouter = require("./routes/auth");
-app.use("/api/auth", authRouter);
+app.use("/", authRouter);
 
 const swaggerDocs = swaggerJsDoc(swaggerOptions);
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));

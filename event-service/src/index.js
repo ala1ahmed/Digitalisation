@@ -37,7 +37,7 @@ app.use(cors());
 
 
 const eventRouter = require("./routes/event");
-app.use("/api/event", eventRouter)
+app.use("/", eventRouter)
 
 
 
